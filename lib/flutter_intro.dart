@@ -85,10 +85,10 @@ class Intro extends InheritedWidget {
     if (isUpdate) {
       return _currentIntroStepBuilder;
     }
-    int index = _finishedIntroStepBuilderList
+    int index = _introStepBuilderList
         .indexWhere((element) => element == _currentIntroStepBuilder);
-    if (index != _finishedIntroStepBuilderList.length - 1) {
-      return _finishedIntroStepBuilderList[index + 1];
+    if (index != _introStepBuilderList.length - 1) {
+      return _introStepBuilderList[index + 1];
     } else {
       _introStepBuilderList.sort((a, b) => a.order - b.order);
       final introStepBuilder =
