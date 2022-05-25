@@ -59,7 +59,13 @@ class _IntroStepBuilderState extends State<IntroStepBuilder> {
     Future.delayed(Duration.zero, () {
       Intro flutterIntro = Intro.of(context);
       if (!flutterIntro._introStepBuilderList.contains(widget)) {
-        flutterIntro._introStepBuilderList.add(widget);
+        int sameOrderIndex = flutterIntro._introStepBuilderList
+            .indexWhere((element) => element.order == widget.order);
+        if(sameOrderIndex >= 0){
+          flutterIntro._introStepBuilderList[sameOrderIndex] = widget;
+        }else{
+          flutterIntro._introStepBuilderList.add(widget);
+        }
         if (widget.onWidgetLoad != null) {
           widget.onWidgetLoad!();
         }
